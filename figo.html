@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rental Motor Figo</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  background: url("https://images.unsplash.com/photo-1558981806-ec527fa84c39?q=80&w=1600") no-repeat center/cover;
+  background-attachment: fixed;
+  color: #fff;
+}
+
+/* HEADER */
+header {
+  background: rgba(0,0,0,0.7);
+  padding: 20px;
+  text-align: center;
+}
+
+/* HERO */
+.hero {
+  position: relative;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: rgba(0,0,0,0.15);
+  backdrop-filter: blur(6px);
+}
+
+/* CONTENT */
+.content {
+  padding: 50px 20px;
+}
+
+.motor-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+}
+
+.motor-card {
+  width: 260px;
+  padding: 20px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+  text-align: center;
+  transition: 0.3s;
+}
+
+.motor-card:hover {
+  transform: translateY(-10px);
+}
+
+.motor-card img {
+  width: 100%;
+  height: 170px;
+  object-fit: contain;
+}
+
+.info {
+  font-size: 14px;
+  text-align: left;
+}
+
+select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  margin-top: 10px;
+}
+
+.price-display {
+  margin: 12px 0;
+  font-weight: bold;
+  color: #ff4081;
+}
+
+.btn {
+  display: block;
+  padding: 12px;
+  background: linear-gradient(45deg, #2196f3, #1e88e5);
+  color: white;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* ================= TESTIMONI MODERN ================= */
+.testimoni {
+  background: rgba(0,0,0,0.75);
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.slide {
+  display: none;
+  font-size: 18px;
+  max-width: 700px;
+  margin: auto;
+}
+
+.active {
+  display: block;
+}
+
+.nama {
+  margin-top: 10px;
+  color: #ff4081;
+  font-weight: bold;
+}
+
+/* ================= SOP ================= */
+.sop {
+  background: rgba(0,0,0,0.75);
+  padding: 50px 20px;
+  margin-top: 40px;
+  text-align: center;
+}
+
+footer {
+  background: #111;
+  text-align: center;
+  padding: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h2>Rental Motor Figo 🚀</h2>
+</header>
+
+<div class="hero">
+  <div>
+    <h1>Sewa Motor Mudah & Cepat</h1>
+    <p>Harian • Mingguan • Bulanan</p>
+  </div>
+</div>
+
+<div class="content">
+  <h2 style="text-align:center;">Pilihan Motor</h2>
+
+  <div class="motor-list">
+
+    <!-- 1 -->
+    <div class="motor-card">
+      <img src="https://imgcdn.espos.id/@espos/images/2022/07/26Vespa-S-125-I-GET-Moladin.com_.jpg">
+      <h3>Vespa Sprint S</h3>
+      <div class="info">Tahun: 2022<br>Kecepatan: 95 km/jam</div>
+      <select onchange="updateHarga(this)">
+        <option value="100000">Harian - Rp 100.000</option>
+        <option value="600000">Mingguan - Rp 600.000</option>
+        <option value="2000000">Bulanan - Rp 2.000.000</option>
+      </select>
+      <div class="price-display">Rp 100.000</div>
+      <a href="#" onclick="orderMotor(this,'Vespa Sprint S')" class="btn">Sewa Motor</a>
+    </div>
+
+    <!-- 2 -->
+    <div class="motor-card">
+      <img src="https://www.naikmotor.com/wp-content/uploads/2025/09/kham-pha-xe-may-dien-qjmotor-e-ltr-vua-ra-mat-toc-do-70-km-h-chay-duoc-105-km-sac-115065-1756662825-68b48c2946b65.jpeg">
+      <h3>QJMotor E-LTR</h3>
+      <div class="info">Tahun: 2024<br>Kecepatan: 70 km/jam</div>
+      <select onchange="updateHarga(this)">
+        <option value="150000">Harian - Rp 150.000</option>
+        <option value="900000">Mingguan - Rp 900.000</option>
+        <option value="3000000">Bulanan - Rp 3.000.000</option>
+      </select>
+      <div class="price-display">Rp 150.000</div>
+      <a href="#" onclick="orderMotor(this,'QJMotor E-LTR')" class="btn">Sewa Motor</a>
+    </div>
+
+    <!-- 3 -->
+    <div class="motor-card">
+      <img src="data:image/jpeg;base64,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">
+      <h3>Yamaha Aerox 155</h3>
+      <div class="info">Tahun: 2022<br>Kecepatan: 125 km/jam</div>
+      <select onchange="updateHarga(this)">
+        <option value="170000">Harian - Rp 170.000</option>
+        <option value="950000">Mingguan - Rp 950.000</option>
+        <option value="3200000">Bulanan - Rp 3.200.000</option>
+      </select>
+      <div class="price-display">Rp 170.000</div>
+      <a href="#" onclick="orderMotor(this,'Yamaha Aerox 155')" class="btn">Sewa Motor</a>
+    </div>
+
+    <!-- 4 -->
+    <div class="motor-card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAqWhMJ7RxWM9s5SyZI7TfCwwmT7ASxcfutg&s">
+      <h3>Yamaha NMAX 155</h3>
+      <div class="info">Tahun: 2023<br>Kecepatan: 120 km/jam</div>
+      <select onchange="updateHarga(this)">
+        <option value="180000">Harian - Rp 180.000</option>
+        <option value="1000000">Mingguan - Rp 1.000.000</option>
+        <option value="3500000">Bulanan - Rp 3.500.000</option>
+      </select>
+      <div class="price-display">Rp 180.000</div>
+      <a href="#" onclick="orderMotor(this,'Yamaha NMAX 155')" class="btn">Sewa Motor</a>
+    </div>
+
+    <!-- 5 -->
+    <div class="motor-card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNAW77WTsszQn3kjSZRedg_3Q7ggZah7gFmw&s">
+      <h3>Kawasaki KLX 150</h3>
+      <div class="info">Tahun: 2021<br>Kecepatan: 110 km/jam</div>
+      <select onchange="updateHarga(this)">
+        <option value="200000">Harian - Rp 200.000</option>
+        <option value="1200000">Mingguan - Rp 1.200.000</option>
+        <option value="4000000">Bulanan - Rp 4.000.000</option>
+      </select>
+      <div class="price-display">Rp 200.000</div>
+      <a href="#" onclick="orderMotor(this,'Kawasaki KLX 150')" class="btn">Sewa Motor</a>
+    </div>
+
+    <!-- 6 -->
+    <div class="motor-card">
+      <img src="https://imgcdnblog.carbay.com/wp-content/uploads/2022/10/01132958/Kawasaki-New-Ninja-ZX-25RR.jpg">
+      <h3>Kawasaki Ninja ZX-25R</h3>
+      <div class="info">Tahun: 2023<br>Kecepatan: 187 km/jam</div>
+      <select onchange="updateHarga(this)">
+        <option value="250000">Harian - Rp 250.000</option>
+        <option value="1500000">Mingguan - Rp 1.500.000</option>
+        <option value="5000000">Bulanan - Rp 5.000.000</option>
+      </select>
+      <div class="price-display">Rp 250.000</div>
+      <a href="#" onclick="orderMotor(this,'Kawasaki Ninja ZX-25R')" class="btn">Sewa Motor</a>
+    </div>
+
+  </div>
+</div>
+
+<!-- TESTIMONI UPGRADE -->
+<div class="testimoni">
+  <h2>⭐ Cerita Pelanggan</h2>
+
+  <div class="slide active">“Pelayanan cepat dan motor selalu siap.”<div class="nama">— Rizky ⭐⭐⭐⭐⭐</div></div>
+  <div class="slide">“Motor bersih dan sangat nyaman.”<div class="nama">— Andi ⭐⭐⭐⭐⭐</div></div>
+  <div class="slide">“Harga murah dan terjangkau.”<div class="nama">— Dinda ⭐⭐⭐⭐⭐</div></div>
+  <div class="slide">“Admin sangat ramah.”<div class="nama">— Siti ⭐⭐⭐⭐⭐</div></div>
+  <div class="slide">“Motor kuat untuk perjalanan jauh.”<div class="nama">— Budi ⭐⭐⭐⭐⭐</div></div>
+  <div class="slide">“Proses cepat dan mudah.”<div class="nama">— Fajar ⭐⭐⭐⭐⭐</div></div>
+  <div class="slide">“Booking via WA sangat gampang.”<div class="nama">— Rina ⭐⭐⭐⭐⭐</div></div>
+  <div class="slide">“Motor seperti baru.”<div class="nama">— Nanda ⭐⭐⭐⭐⭐</div></div>
+  <div class="slide">“Sangat direkomendasikan.”<div class="nama">— Aldi ⭐⭐⭐⭐⭐</div></div>
+  <div class="slide">“Pelayanan profesional.”<div class="nama">— Lina ⭐⭐⭐⭐⭐</div></div>
+  <div class="slide">“Irit bensin dan nyaman.”<div class="nama">— Yoga ⭐⭐⭐⭐⭐</div></div>
+  <div class="slide">“Tidak pernah kecewa.”<div class="nama">— Arif ⭐⭐⭐⭐⭐</div></div>
+  <div class="slide">“Motor sangat terawat.”<div class="nama">— Dimas ⭐⭐⭐⭐⭐</div></div>
+  <div class="slide">“Respon sangat cepat.”<div class="nama">— Putri ⭐⭐⭐⭐⭐</div></div>
+  <div class="slide">“Sangat aman dan terpercaya.”<div class="nama">— Kevin ⭐⭐⭐⭐⭐</div></div>
+</div>
+
+<!-- SOP -->
+<div class="sop">
+  <h2>SOP & Ketentuan Rental Motor</h2>
+
+  <ul style="text-align:left; max-width:750px; margin:auto; line-height:1.8;">
+    <li>✔ Wajib memiliki KTP & SIM C</li>
+    <li>✔ Minimal usia 17 tahun</li>
+    <li>✔ Dilarang balap liar</li>
+    <li>✔ Motor hanya untuk pribadi</li>
+    <li>✔ Bensin ditanggung penyewa</li>
+    <li>✔ Kerusakan ditanggung penyewa</li>
+    <li>✔ Kehilangan wajib ganti rugi</li>
+    <li>✔ Helm disediakan</li>
+    <li>✔ Keterlambatan Rp 20.000/jam</li>
+    <li>✔ Booking via WhatsApp</li>
+  </ul>
+</div>
+
+<footer>
+  &copy; 2026 Rental Motor Figo
+</footer>
+
+<script>
+function updateHarga(select) {
+  const card = select.closest(".motor-card");
+  const priceDiv = card.querySelector(".price-display");
+  priceDiv.innerText = "Rp " + parseInt(select.value).toLocaleString("id-ID");
+}
+
+function orderMotor(btn, namaMotor) {
+  const card = btn.closest(".motor-card");
+  const select = card.querySelector("select");
+  const paket = select.options[select.selectedIndex].text;
+  const harga = parseInt(select.value).toLocaleString("id-ID");
+
+  const pesan = `Halo, saya ingin sewa ${namaMotor} (${paket}) dengan harga Rp ${harga}`;
+  btn.href = "https://wa.me/6285808451274?text=" + encodeURIComponent(pesan);
+}
+
+/* slider testimoni */
+let i = 0;
+const slides = document.querySelectorAll(".slide");
+setInterval(() => {
+  slides[i].classList.remove("active");
+  i = (i + 1) % slides.length;
+  slides[i].classList.add("active");
+}, 3000);
+</script>
+
+</body>
+</html>
